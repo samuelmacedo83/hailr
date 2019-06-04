@@ -118,6 +118,13 @@ prompt_to_install_hail <- function() {
     }
 }
 
+#' Install Hail
+#' 
+#' Install versions of Hail for use with local HailContext.
+#' 
+#' @param version A string with the Hail version
+#'
+#' @export
 install_hail <- function(version) {
     if (!requireNamespace("sparklyr", quietly=TRUE))
         stop(strwrap(paste(
