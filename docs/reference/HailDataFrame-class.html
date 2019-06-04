@@ -245,9 +245,41 @@
 <span class='no'>tsv1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>data_dir</span>, <span class='st'>"kt_example1.tsv"</span>)
 
 <span class='co'>## read directly from file into Hail</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>readHailDataFrameFromText</span>(<span class='no'>tsv1</span>, <span class='kw'>header</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in hail_dir(): The rappdirs package must be installed to use the automaticallyinstalled Hail. Please install rappdirs or use a system Hail.</span></div><div class='input'>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>readHailDataFrameFromText</span>(<span class='no'>tsv1</span>, <span class='kw'>header</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'openssl':</span>
+#&gt; <span class='message'>  method      from</span>
+#&gt; <span class='message'>  print.bytes Rcpp</span></div><div class='output co'>#&gt; <span class='error'>Error: java.lang.Exception: No matched method found for class is.hail.HailContext.importTable</span>
+#&gt; <span class='error'>	at sparklyr.Invoke.invoke(invoke.scala:136)</span>
+#&gt; <span class='error'>	at sparklyr.StreamHandler.handleMethodCall(stream.scala:123)</span>
+#&gt; <span class='error'>	at sparklyr.StreamHandler.read(stream.scala:66)</span>
+#&gt; <span class='error'>	at sparklyr.BackendHandler.channelRead0(handler.scala:51)</span>
+#&gt; <span class='error'>	at sparklyr.BackendHandler.channelRead0(handler.scala:4)</span>
+#&gt; <span class='error'>	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:357)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:343)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:336)</span>
+#&gt; <span class='error'>	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:357)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:343)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:336)</span>
+#&gt; <span class='error'>	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)</span>
+#&gt; <span class='error'>	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:357)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:343)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:336)</span>
+#&gt; <span class='error'>	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:357)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:343)</span>
+#&gt; <span class='error'>	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:643)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:566)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:480)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)</span>
+#&gt; <span class='error'>	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:131)</span>
+#&gt; <span class='error'>	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)</span>
+#&gt; <span class='error'>	at java.lang.Thread.run(Thread.java:748)</span></div><div class='input'>
 <span class='co'>## read file into R, send to Hail</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>send</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/read.table'>read.table</a></span>(<span class='no'>tsv1</span>, <span class='kw'>header</span><span class='kw'>=</span><span class='fl'>TRUE</span>), <span class='fu'>hail</span>())</div><div class='output co'>#&gt; <span class='error'>Error in hail_dir(): The rappdirs package must be installed to use the automaticallyinstalled Hail. Please install rappdirs or use a system Hail.</span></div><div class='input'>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='send.html'>send</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/read.table'>read.table</a></span>(<span class='no'>tsv1</span>, <span class='kw'>header</span><span class='kw'>=</span><span class='fl'>TRUE</span>), <span class='fu'><a href='HailContext.html'>hail</a></span>())</div><div class='output co'>#&gt; <span class='error'>Error in subset_List_by_List(x, i): list-like subscript has names not in list-like object to subset</span></div><div class='input'>
 <span class='co'>## add/modify columns</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/transform'>transform</a></span>(<span class='no'>df</span>, <span class='kw'>A</span> <span class='kw'>=</span> <span class='no'>X</span> / <span class='fl'>2</span>, <span class='kw'>B</span> <span class='kw'>=</span> <span class='no'>X</span> + <span class='fl'>21</span>)</div><div class='output co'>#&gt; <span class='error'>Error in as.data.frame.default(x[[i]], optional = TRUE): cannot coerce class ‘"function"’ to a data.frame</span></div><div class='input'>
 <span class='co'>### TOUGH: not supported by Hail directly, but could aggregate() and join()</span>
@@ -266,7 +298,37 @@
 
 <span class='co'>## filter rows</span>
 <span class='no'>tsv2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>data_dir</span>, <span class='st'>"kt_example2.tsv"</span>)
-<span class='no'>df2</span> <span class='kw'>&lt;-</span> <span class='fu'>readHailDataFrameFromText</span>(<span class='no'>tsv2</span>, <span class='kw'>header</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error in hail_dir(): The rappdirs package must be installed to use the automaticallyinstalled Hail. Please install rappdirs or use a system Hail.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/subset'>subset</a></span>(<span class='no'>df2</span>, <span class='no'>B</span> <span class='kw'>!=</span> <span class='st'>"rabbit"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in subset(df2, B != "rabbit"): object 'df2' not found</span></div><div class='input'>
+<span class='no'>df2</span> <span class='kw'>&lt;-</span> <span class='fu'>readHailDataFrameFromText</span>(<span class='no'>tsv2</span>, <span class='kw'>header</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='error'>Error: java.lang.Exception: No matched method found for class is.hail.HailContext.importTable</span>
+#&gt; <span class='error'>	at sparklyr.Invoke.invoke(invoke.scala:136)</span>
+#&gt; <span class='error'>	at sparklyr.StreamHandler.handleMethodCall(stream.scala:123)</span>
+#&gt; <span class='error'>	at sparklyr.StreamHandler.read(stream.scala:66)</span>
+#&gt; <span class='error'>	at sparklyr.BackendHandler.channelRead0(handler.scala:51)</span>
+#&gt; <span class='error'>	at sparklyr.BackendHandler.channelRead0(handler.scala:4)</span>
+#&gt; <span class='error'>	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:357)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:343)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:336)</span>
+#&gt; <span class='error'>	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:357)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:343)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:336)</span>
+#&gt; <span class='error'>	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:293)</span>
+#&gt; <span class='error'>	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:267)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:357)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:343)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:336)</span>
+#&gt; <span class='error'>	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1294)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:357)</span>
+#&gt; <span class='error'>	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:343)</span>
+#&gt; <span class='error'>	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:911)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:131)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:643)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:566)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:480)</span>
+#&gt; <span class='error'>	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)</span>
+#&gt; <span class='error'>	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:131)</span>
+#&gt; <span class='error'>	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)</span>
+#&gt; <span class='error'>	at java.lang.Thread.run(Thread.java:748)</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/subset'>subset</a></span>(<span class='no'>df2</span>, <span class='no'>B</span> <span class='kw'>!=</span> <span class='st'>"rabbit"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in subset(df2, B != "rabbit"): object 'df2' not found</span></div><div class='input'>
 <span class='co'>## aggregate</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/aggregate'>aggregate</a></span>(<span class='no'>df</span>, <span class='kw'>mean_c1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>C1</span>), <span class='kw'>mean_c2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>C2</span>))</div><div class='output co'>#&gt; <span class='error'>Error in as.data.frame.default(x): cannot coerce class ‘"function"’ to a data.frame</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/aggregate'>aggregate</a></span>(~ <span class='no'>SEX</span>, <span class='no'>df</span>, <span class='kw'>mean_height_data</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>HT</span>))</div><div class='output co'>#&gt; <span class='error'>Error in aggregate.formula(~SEX, df, mean_height_data = mean(HT)): 'formula' must have both left and right hand sides</span></div><div class='input'>
 <span class='co'>## modify global fields</span>
