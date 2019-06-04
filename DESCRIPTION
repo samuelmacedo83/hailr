@@ -10,7 +10,7 @@ License: MIT
 Imports: SummarizedExperiment, S4Vectors (>= 0.21.15), IRanges, GenomicRanges,
 	 jsonlite, utils, tools
 Depends:
-    R (>= 3.2.0),
+    R (>= 3.6.0),
     BiocGenerics (>= 0.15.1),
     methods
 Suggests: sparklyr (>= 0.9.2), dplyr, rappdirs
@@ -44,3 +44,4 @@ Collate:
 	typed_list.R
 	Sparklyr-driver.R
 	utils.R
+RoxygenNote: 6.1.1
